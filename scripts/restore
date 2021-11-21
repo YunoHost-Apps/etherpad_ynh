@@ -29,6 +29,7 @@ app=$YNH_APP_INSTANCE_NAME
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+export=$(ynh_app_setting_get --app=$app --key=export)
 
 #=================================================
 # CHECK IF ETHERPAD CAN BE RESTORED
@@ -45,6 +46,19 @@ test ! -d $final_path \
 #=================================================
 
 ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
+
+#=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing dependencies..." --weight=6
+
+ynh_install_nodejs --nodejs_version=$nodejs_version
+
+if [ "$export" = "abiword" ]; then
+	ynh_install_app_dependencies $abiword_app_depencencies
+elif [ "$export" = "libreoffice" ]; then
+	ynh_install_app_dependencies $libreoffice_app_dependencies
+fi
 
 #=================================================
 # RECREATE THE DEDICATED USER

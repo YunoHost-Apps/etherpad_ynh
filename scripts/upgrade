@@ -23,6 +23,7 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 port=$(ynh_app_setting_get --app=$app --key=port)
 password=$(ynh_app_setting_get --app=$app --key=password)
+export=$(ynh_app_setting_get --app=$app --key=export)
 
 #=================================================
 # CHECK VERSION
@@ -81,6 +82,19 @@ fi
 ynh_script_progression --message="Stopping a systemd service..." --weight=42
 
 ynh_systemd_action --service_name=$app --action=stop --log_path="/var/log/$app/$app.log"
+
+#=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing dependencies..." --weight=6
+
+ynh_install_nodejs --nodejs_version=$nodejs_version
+
+if [ "$export" = "abiword" ]; then
+	ynh_install_app_dependencies $abiword_app_depencencies
+elif [ "$export" = "libreoffice" ]; then
+	ynh_install_app_dependencies $libreoffice_app_dependencies
+fi
 
 #=================================================
 # NGINX CONFIGURATION
