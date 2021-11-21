@@ -23,8 +23,6 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 port=$(ynh_app_setting_get --app=$app --key=port)
 password=$(ynh_app_setting_get --app=$app --key=password)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
 #=================================================
 # CHECK VERSION
@@ -51,10 +49,10 @@ ynh_abort_if_errors
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=2
 
-# If db_name doesn't exist, create it
-if [ -z "$db_name" ]; then
-	db_name=$(ynh_sanitize_dbid --db_name=$app)
-	ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+# If redis_db doesn't exist, create it
+if [ -z "$redis_db" ]; then
+	redis_db=$(ynh_redis_get_free_db)
+yunohostnh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 fi
 
 # If final_path doesn't exist, create it
@@ -168,4 +166,4 @@ ynh_systemd_action --service_name=nginx --action=reload
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of Etherpad completed" --last
+ynh_script_progression --message="Upgrade of $app completed" --last
