@@ -15,16 +15,28 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-Online editor providing collaborative editing in real-time.
+Etherpad is a real-time collaborative editor scalable to thousands of simultaneous real time users. It provides full data export capabilities, and runs on your server, under your control.
 
-**Shipped version:** 1.8.14~ynh1
+
+**Shipped version:** 1.8.15~ynh1
 
 **Demo:** https://video.etherpad.com/
+
+## Screenshots
+
+![](./doc/screenshots/etherpad.gif)
+
+## Disclaimers / important information
+
+## Configuration
+
+You can access Etherpad's admin panel at `domain.tld/admin`. The configuration file for Etherpad is at the path `/var/www/etherpad/settings.json`.
+
+Online editor providing collaborative editing in real-time.
 
 ## Documentation and resources
 
 * Official app website: https://etherpad.org/
-* Official user documentation: https://yunohost.org/en/app_etherpad
 * Official admin documentation: http://etherpad.org/doc/v1.8.14
 * Upstream app code repository: https://github.com/ether/etherpad-lite
 * YunoHost documentation for this app: https://yunohost.org/app_etherpad

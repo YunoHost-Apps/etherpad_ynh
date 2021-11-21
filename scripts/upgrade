@@ -33,6 +33,20 @@ db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 upgrade_type=$(ynh_check_app_version_changed)
 
 #=================================================
+# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
+#=================================================
+ynh_script_progression --message="Backing up Etherpad before upgrading (may take a while)..." --weight=1
+
+# Backup the current version of the app
+ynh_backup_before_upgrade
+ynh_clean_setup () {
+	# restore it if the upgrade fails
+	ynh_restore_upgradebackup
+}
+# Exit if an error occurs during the execution of the script
+ynh_abort_if_errors
+
+#=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=2
@@ -66,14 +80,13 @@ fi
 #=================================================
 ynh_script_progression --message="Backing up Etherpad before upgrading (may take a while)..." --weight=1
 
-# Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
-	# restore it if the upgrade fails
-	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+	ynh_app_setting_delete --app=$app --key=is_public
+fi
+
+if ! ynh_permission_exists --permission="admin"; then
+	# Create the required permissions
+	ynh_permission_create --permission="admin" --url="/admin" --allowed=$admin --auth_header=false
+fi
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -131,12 +144,14 @@ chown -R $app:www-data "$final_path"
 chmod 400 $final_path/credentials.json
 
 #=================================================
-# SETUP SYSTEMD
+# SETUP LOGROTATE
 #=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --weight=2
+ynh_script_progression --message="Upgrading logrotate configuration..." --weight=1
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
+# Use logrotate to manage app-specific logfile(s)
+ynh_use_logrotate --non-append
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

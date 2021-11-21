@@ -3,10 +3,10 @@
     "id": "etherpad",
     "packaging_format": 1,
     "description": {
-        "en": "Online editor providing collaborative editing in real-time.",
-        "fr": "Éditeur en ligne fournissant l'édition collaborative en temps réel."
+        "en": "Online editor providing collaborative editing in real-time",
+        "fr": "Éditeur en ligne fournissant l'édition collaborative en temps réel"
     },
-    "version": "1.8.14~ynh1",
+    "version": "1.8.15~ynh1",
     "url": "https://etherpad.org/",
     "upstream": {
         "license": "Apache-2.0",
@@ -31,8 +31,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "example.com"
+                "type": "domain"
             },
             {
                 "name": "path",
@@ -50,24 +49,32 @@
                 "default": true
             },
             {
+                "name": "export",
+                "type": "string",
+                "ask": {
+                    "en": "Use AbiWord (~260 Mo) or LibreOffice (~400 Mo) (more stable) to expand export possibilities (PDF, doc)?",
+                    "fr": "Utiliser AbiWord (~260 Mo) ou LibreOffice (~400 Mo) (plus stable) pour étendre les possibilités d'export (PDF, doc) ?"
+                },
+                "choices" : ["none", "abiword", "libreoffice"],
+                "default" : "none"
+            },
+            {
                 "name": "language",
                 "type": "string",
                 "ask": {
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["de", "en", "es", "fr", "it", "pt"],
+                "choices": ["de", "en", "es", "fr", "it"],
                 "default": "en"
             },
             {
                 "name": "admin",
-                "type": "user",
-                "example": "johndoe"
+                "type": "user"
             },
             {
                 "name": "password",
-                "type": "password",
-                "example": "Choose a password"
+                "type": "password"
             }
         ]
     }
