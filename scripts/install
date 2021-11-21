@@ -72,8 +72,6 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=6
 
-ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
-
 ynh_install_nodejs --nodejs_version=$nodejs_version
 
 if [ "$export" = "abiword" ]; then
@@ -81,14 +79,6 @@ if [ "$export" = "abiword" ]; then
 elif [ "$export" = "libreoffice" ]; then
 	ynh_install_app_dependencies $libreoffice_app_dependencies
 fi
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=4
-
-# Create a system user
-ynh_system_user_create --username=$app --home_dir=$final_path
 
 #=================================================
 # CREATE DEDICATED USER
