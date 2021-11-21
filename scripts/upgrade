@@ -24,6 +24,7 @@ language=$(ynh_app_setting_get --app=$app --key=language)
 port=$(ynh_app_setting_get --app=$app --key=port)
 password=$(ynh_app_setting_get --app=$app --key=password)
 export=$(ynh_app_setting_get --app=$app --key=export)
+redis_db=$(ynh_app_setting_get --app=$app --key=redis_db)
 
 #=================================================
 # CHECK VERSION
@@ -53,7 +54,7 @@ ynh_script_progression --message="Ensuring downward compatibility..." --weight=2
 # If redis_db doesn't exist, create it
 if [ -z "$redis_db" ]; then
 	redis_db=$(ynh_redis_get_free_db)
-yunohostnh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
+	yunohostnh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 fi
 
 # If final_path doesn't exist, create it
