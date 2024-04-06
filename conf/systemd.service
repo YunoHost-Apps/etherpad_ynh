@@ -6,7 +6,7 @@ After=syslog.target network.target
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__INSTALL_DIR__/
+WorkingDirectory=__INSTALL_DIR__/dist
 #Environment=ETHERPAD_PRODUCTION=true
 Environment="NODE_ENV=production"
 #Environment="__YNH_NODE_LOAD_PATH__"

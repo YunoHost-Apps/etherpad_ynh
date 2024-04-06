@@ -13,7 +13,7 @@ maintainers = ["eric_G"]
 license = "Apache-2.0"
 website = "https://etherpad.org/"
 demo = "https://video.etherpad.com/"
-admindoc = "http://etherpad.org/doc/v1.9.3"
+admindoc = "http://etherpad.org/doc/v2.0.1"
 code = "https://github.com/ether/etherpad-lite"
 
 [integration]
