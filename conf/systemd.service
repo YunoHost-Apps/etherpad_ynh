@@ -10,8 +10,9 @@ WorkingDirectory=__INSTALL_DIR__/
 Environment=ETHERPAD_PRODUCTION=true
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
-#ExecStart=__INSTALL_DIR__/src/bin/run.sh
-ExecStart=pnpm --filter ep_etherpad-lite run prod
+ExecStart=__INSTALL_DIR__/bin/run.sh
+#ExecStart=__INSTALL_DIR__/src/pnpm run prod
+#ExecStart=pnpm --filter ep_etherpad-lite run prod
 Restart=always
 
 # Sandboxing options to harden security
