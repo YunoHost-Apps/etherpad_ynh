@@ -82,18 +82,13 @@ chown $app:$app "$install_dir/credentials.json"
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
-
-RUN cd ./admin && npm install -g pnpm && pnpm install && pnpm run build --outDir ./dist
-RUN cd ./ui && pnpm install && pnpm run build --outDir ./dist
-
 pushd $install_dir
  	ynh_use_nodejs
     ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $install_dir/admin && $ynh_npm install -g pnpm && pnpm install && pnpm run build --outDir ./dist
-    
     ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $install_dir/ui && pnpm install && pnpm run build --outDir ./dist
 
     #ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm install -g pnpm
- 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH ETHERPAD_PRODUCTION=true src/bin/installDeps.sh
+ 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH ETHERPAD_PRODUCTION=true bin/installDeps.sh && rm -rf ~/.npm && rm -rf ~/.local && rm -rf ~/.cache
 popd
 
 #=================================================
