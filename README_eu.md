@@ -33,7 +33,7 @@ If you want to install Etherpad with plugins and mysql database: https://github.
 ## Dokumentazioa eta baliabideak
 
 - Aplikazioaren webgune ofiziala: <https://etherpad.org/>
-- Administratzaileen dokumentazio ofiziala: <http://etherpad.org/doc/v1.9.3>
+- Administratzaileen dokumentazio ofiziala: <http://etherpad.org/doc/v2.0.1>
 - Jatorrizko aplikazioaren kode-gordailua: <https://github.com/ether/etherpad-lite>
 - YunoHost Denda: <https://apps.yunohost.org/app/etherpad>
 - Eman errore baten berri: <https://github.com/YunoHost-Apps/etherpad_ynh/issues>
