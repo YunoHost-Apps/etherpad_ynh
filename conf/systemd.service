@@ -7,12 +7,10 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-Environment=ETHERPAD_PRODUCTION=true
+#Environment=ETHERPAD_PRODUCTION=true
 Environment="NODE_ENV=production"
-Environment="__YNH_NODE_LOAD_PATH__"
-#ExecStart=__INSTALL_DIR__/bin/run.sh
-ExecStart=__INSTALL_DIR__/ pnpm run prod
-#ExecStart=pnpm --filter ep_etherpad-lite run prod
+#Environment="__YNH_NODE_LOAD_PATH__"
+ExecStart=pnpm run prod
 Restart=always
 
 # Sandboxing options to harden security
