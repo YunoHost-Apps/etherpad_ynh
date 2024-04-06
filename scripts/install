@@ -84,6 +84,7 @@ ynh_script_progression --message="Installing $app..." --weight=10
 
 pushd $install_dir
  	ynh_use_nodejs
+    ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm install -g pnpm
  	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH ETHERPAD_PRODUCTION=true src/bin/installDeps.sh
 popd
 
