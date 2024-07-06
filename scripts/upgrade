@@ -102,7 +102,8 @@ ynh_script_progression --message="Installing $app..." --weight=10
 pushd $install_dir
  	ynh_use_nodejs
     ynh_exec_warn_less env $ynh_node_load_PATH corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
- 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH ETHERPAD_PRODUCTION=true COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/installDeps.sh
+ 	ynh_exec_warn_less env $ynh_node_load_PATH pnpm --recursive i --production
+    ynh_secure_remove --file="$install_dir/var/minified*"
 popd
 
 #=================================================

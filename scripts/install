@@ -17,7 +17,7 @@ ynh_script_progression --message="Installing dependencies..." --weight=6
 ynh_install_nodejs --nodejs_version=$nodejs_version
 
 #=================================================
-# CREATE A POSTQRESQL DATABASE
+# CREATE REDIS DATABASE
 #=================================================
 ynh_script_progression --message="Creating a Redis database..." --weight=5
 
@@ -36,9 +36,9 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# SETUP SYSTEMD
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=4
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
 
 ynh_add_systemd_config
 
@@ -49,9 +49,9 @@ ynh_use_logrotate
 yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
 
 #=================================================
-# MODIFY A CONFIG FILE
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring $app..." --weight=6
+ynh_script_progression --message="Adding $app's configuration files..." --weight=1
 
 abiword_path="null"
 soffice_path="null"
@@ -81,7 +81,7 @@ ynh_script_progression --message="Installing $app..." --weight=10
 pushd $install_dir
     ynh_use_nodejs
     ynh_exec_warn_less env $ynh_node_load_PATH corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
-    ynh_exec_warn_less env $ynh_node_load_PATH ETHERPAD_PRODUCTION=true pnpm --recursive i --production
+    ynh_exec_warn_less env $ynh_node_load_PATH pnpm --recursive i --production
 popd
 
 #=================================================

@@ -5,7 +5,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "2.1.0~ynh1"
+version = "2.1.0~ynh3"
 
 maintainers = ["eric_G"]
 
@@ -17,7 +17,7 @@ admindoc = "https://etherpad.org/doc/v2.0.2/"
 code = "https://github.com/ether/etherpad-lite"
 
 [integration]
-yunohost = ">= 11.2.14"
+yunohost = ">= 11.2.20"
 architectures = "all"
 multi_instance = true
 

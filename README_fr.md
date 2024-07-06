@@ -5,7 +5,7 @@ Il NE doit PAS être modifié à la main.
 
 # Etherpad pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/etherpad.svg)](https://dash.yunohost.org/appci/app/etherpad) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Niveau d’intégration](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
 
 [![Installer Etherpad avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 
@@ -22,7 +22,7 @@ Attention, la sauvegarde et la restauration de la base de données Redis ne sont
 Si vous souhaitez installer Etherpad avec les plugins et la base de données mysql : https://github.com/YunoHost-Apps/etherpad_mypads_ynh",
 
 
-**Version incluse :** 2.1.0~ynh1
+**Version incluse :** 2.1.0~ynh3
 
 **Démo :** <https://video.etherpad.com/>
 

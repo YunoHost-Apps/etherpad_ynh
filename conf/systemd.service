@@ -9,9 +9,7 @@ Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
-Environment="ETHERPAD_PRODUCTION=true"
-ExecStart=__INSTALL_DIR__/bin/run.sh
-#ExecStart=pnpm run prod
+ExecStart=__NODEJS_PATH__/pnpm run prod
 Restart=always
 
 # Sandboxing options to harden security
