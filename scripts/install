@@ -84,6 +84,12 @@ pushd $install_dir
     ynh_exec_warn_less env $ynh_node_load_PATH pnpm --recursive i --production
 popd
 
+pushd $install_dir/admin
+    ynh_use_nodejs
+    ynh_exec_warn_less env $ynh_node_load_PATH pnpm install
+    ynh_exec_warn_less env $ynh_node_load_PATH pnpm pnpm run build-copy
+popd
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
