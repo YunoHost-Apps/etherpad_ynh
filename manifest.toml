@@ -5,7 +5,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "2.1.0~ynh3"
+version = "2.2.2~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -63,8 +63,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.1.0.tar.gz"
-        sha256 = "68a238852b82088a539228fb83eb4efa6599da163e6a3214e5cf15144a50ec49"
+        url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.2.2.tar.gz"
+        sha256 = "9e7fe5c3cae0adac95b6ae45fd7febea38d2c2fcb5ccaccf47235fe1f239480f"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
@@ -81,7 +81,7 @@ ram.runtime = "50M"
     admin.show_tile = false
 
     [resources.apt]
-    packages = ""
+    packages = "redis-server"
 
     packages_from_raw_bash = """
           if [[ "$export" == "libreoffice" ]]
