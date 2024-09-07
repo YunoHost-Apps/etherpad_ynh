@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Etherpad YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/etherpad.svg)](https://dash.yunohost.org/appci/app/etherpad) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
 
 [![Instalatu Etherpad YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 
@@ -22,7 +22,7 @@ Be aware, Redis database backup and restore is not fully implemented.
 If you want to install Etherpad with plugins and mysql database: https://github.com/YunoHost-Apps/etherpad_mypads_ynh",
 
 
-**Paketatutako bertsioa:** 2.1.0~ynh2
+**Paketatutako bertsioa:** 2.2.4~ynh1
 
 **Demoa:** <https://video.etherpad.com/>
 
