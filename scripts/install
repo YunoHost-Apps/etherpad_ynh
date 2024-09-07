@@ -11,14 +11,6 @@ ynh_script_progression "Installing dependencies..."
 ynh_nodejs_install
 
 #=================================================
-# CREATE REDIS DATABASE
-#=================================================
-ynh_script_progression "Creating a Redis database..."
-
-redis_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --key=redis_db --value="$redis_db"
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -36,7 +28,7 @@ ynh_config_add_nginx
 
 ynh_config_add_logrotate
 
-yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Collaborative editor"
 
 #=================================================
 # APP INITIAL CONFIGURATION
