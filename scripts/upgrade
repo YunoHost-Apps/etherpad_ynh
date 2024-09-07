@@ -40,7 +40,7 @@ ynh_config_add_systemd
 
 ynh_config_add_logrotate
 
-yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Collaborative editor"
 
 #=================================================
 # CONFIGURE ETHERPAD
@@ -68,8 +68,9 @@ ynh_script_progression "Installing $app..."
 
 pushd $install_dir
     ynh_hide_warnings corepack enable &&  corepack prepare pnpm@latest --activate
- 	ynh_hide_warnings pnpm --recursive i --production
-    ynh_safe_rm "$install_dir/var/minified*"
+    ynh_hide_warnings ynh_exec_as_app ETHERPAD_PRODUCTION=true bin/installDeps.sh
+ 	#ynh_hide_warnings pnpm --recursive i --production
+    #ynh_safe_rm "$install_dir/var/minified*"
 popd
 
 #=================================================
