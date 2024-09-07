@@ -68,6 +68,7 @@ pushd $install_dir
 popd
 
 pushd $install_dir/admin
+    npm install typescript -g
     ynh_hide_warnings pnpm run build
 popd
 pushd $install_dir/ui
