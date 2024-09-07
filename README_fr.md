@@ -22,7 +22,7 @@ Attention, la sauvegarde et la restauration de la base de données Redis ne sont
 Si vous souhaitez installer Etherpad avec les plugins et la base de données mysql : https://github.com/YunoHost-Apps/etherpad_mypads_ynh",
 
 
-**Version incluse :** 2.2.3~ynh1
+**Version incluse :** 2.2.4~ynh1
 
 **Démo :** <https://video.etherpad.com/>
 
