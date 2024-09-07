@@ -65,8 +65,13 @@ ynh_script_progression "Installing $app..."
 pushd $install_dir
     ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
     ynh_hide_warnings pnpm --recursive i --production
-    ynh_hide_warnings install_dir/admin pnpm run build
-    ynh_hide_warnings install_dir/ui pnpm run build
+popd
+
+pushd $install_dir/admin
+    ynh_hide_warnings pnpm run build
+popd
+pushd $install_dir/ui
+    ynh_hide_warnings pnpm run build
 popd
 
 #=================================================
