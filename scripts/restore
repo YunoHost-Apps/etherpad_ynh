@@ -26,7 +26,7 @@ popd
 #=================================================
 ynh_script_progression --message="Restoring the PostgreSQL database..." --weight=6
 
-ynh_psql_execute_file_as_root --file="./db.sql" --database=$db_name
+ynh_psql_db_shell < ./db.sql
 
 #=================================================
 # RESTORE SYSTEMD
