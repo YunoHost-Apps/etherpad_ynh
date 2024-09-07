@@ -28,7 +28,7 @@ ynh_config_add_nginx
 
 ynh_config_add_logrotate
 
-yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Collaborative editor"
 
 #=================================================
 # APP INITIAL CONFIGURATION
