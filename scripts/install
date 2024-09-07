@@ -1,57 +1,47 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=6
+ynh_script_progression "Installing dependencies..."
 
-ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_nodejs_install
 
 #=================================================
 # CREATE REDIS DATABASE
 #=================================================
-ynh_script_progression --message="Creating a Redis database..." --weight=5
+ynh_script_progression "Creating a Redis database..."
 
-# Configure redis
 redis_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
+ynh_app_setting_set --key=redis_db --value="$redis_db"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir=$install_dir
-
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_systemd_config
+ynh_config_add_systemd
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-ynh_use_logrotate
+ynh_config_add_logrotate
 
 yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding $app's configuration files..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
 abiword_path="null"
 soffice_path="null"
@@ -64,35 +54,28 @@ then
     soffice_path="\"$(which soffice)\""
 fi
 
-ynh_add_config --template="settings.json" --destination="$install_dir/settings.json"
-ynh_add_config --template="credentials.json" --destination="$install_dir/credentials.json"
-
-chmod 600 "$install_dir/settings.json"
-chown $app:$app "$install_dir/settings.json"
-
-chmod 600 "$install_dir/credentials.json"
-chown $app:$app "$install_dir/credentials.json"
+ynh_config_add --template="settings.json" --destination="$install_dir/settings.json"
+ynh_config_add --template="credentials.json" --destination="$install_dir/credentials.json"
 
 #=================================================
 # INSTALL ETHERPAD
 #=================================================
-ynh_script_progression --message="Installing $app..." --weight=10
+ynh_script_progression "Installing $app..."
 
 pushd $install_dir
-    ynh_use_nodejs
-    ynh_exec_warn_less env $ynh_node_load_PATH corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
-    ynh_exec_warn_less env $ynh_node_load_PATH pnpm --recursive i --production
+    ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+    ynh_hide_warnings pnpm --recursive i --production
 popd
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=6
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemd_action --service_name=$app --action=restart --log_path=systemd --line_match="Your Etherpad version is"
+ynh_systemctl --service=$app --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of Etherpad completed" --last
+ynh_script_progression "Installation of Etherpad completed"
