@@ -78,7 +78,7 @@ ram.runtime = "50M"
     main.url = "/"
     admin.url = "/admin"
     admin.allowed = ["admins"]
-    admin.auth_header = false
+    admin.auth_header = true
     admin.show_tile = false
 
     [resources.apt]
