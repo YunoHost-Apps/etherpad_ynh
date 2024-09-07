@@ -25,7 +25,7 @@ ynh_app_setting_set_default --key=password --value=$(ynh_string_random --length=
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="settings.json credentials.json"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="settings.json credentials.json var/rusty2.db"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -40,7 +40,7 @@ ynh_config_add_systemd
 
 ynh_config_add_logrotate
 
-yunohost service add $app --description="Collaborative editor" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Collaborative editor"
 
 #=================================================
 # CONFIGURE ETHERPAD
@@ -68,7 +68,7 @@ ynh_script_progression "Installing $app..."
 
 pushd $install_dir
     ynh_hide_warnings corepack enable &&  corepack prepare pnpm@latest --activate
- 	ynh_hide_warnings pnpm i    
+    ynh_hide_warnings pnpm i    
     ynh_hide_warnings pnpm run build:etherpad
     ynh_safe_rm "$install_dir/var/minified*"
 popd

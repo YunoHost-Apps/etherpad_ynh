@@ -76,14 +76,8 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
-    admin.url = "/admin"
-    admin.allowed = ["admins"]
-    admin.auth_header = true
-    admin.show_tile = false
 
     [resources.apt]
-    packages = "redis-server"
-
     packages_from_raw_bash = """
           if [[ "$export" == "libreoffice" ]]
           then
@@ -93,3 +87,4 @@ ram.runtime = "50M"
               echo "abiword"
           fi
     """
+    
