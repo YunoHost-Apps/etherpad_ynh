@@ -82,9 +82,6 @@ ram.runtime = "50M"
     #admin.show_tile = false
 
     [resources.apt]
-
-    packages = "postgresql"
-
     packages_from_raw_bash = """
           if [[ "$export" == "libreoffice" ]]
           then
@@ -94,7 +91,4 @@ ram.runtime = "50M"
               echo "abiword"
           fi
     """
-
-    [resources.database]
-    type = "postgresql"
     

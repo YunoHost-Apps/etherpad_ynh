@@ -22,13 +22,6 @@ pushd "$install_dir"
 popd
 
 #=================================================
-# RESTORE THE POSTGRESQL DATABASE
-#=================================================
-ynh_script_progression --message="Restoring the PostgreSQL database..." --weight=6
-
-ynh_psql_db_shell < ./db.sql
-
-#=================================================
 # RESTORE SYSTEMD
 #=================================================
 ynh_script_progression "Restoring system configurations related to $app..."
