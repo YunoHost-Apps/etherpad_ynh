@@ -68,9 +68,8 @@ ynh_script_progression "Installing $app..."
 
 pushd $install_dir
     ynh_hide_warnings corepack enable &&  corepack prepare pnpm@latest --activate
-    ynh_hide_warnings ynh_exec_as_app ETHERPAD_PRODUCTION=true bin/installDeps.sh
- 	#ynh_hide_warnings pnpm --recursive i --production
-    #ynh_safe_rm "$install_dir/var/minified*"
+ 	ynh_hide_warnings pnpm --recursive i --production
+    ynh_safe_rm "$install_dir/var/minified*"
 popd
 
 #=================================================
