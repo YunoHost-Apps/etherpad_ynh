@@ -27,6 +27,12 @@ ynh_app_setting_set_default --key=export --value=none
 ynh_app_setting_set_default --key=path --value="/"
 ynh_app_setting_set_default --key=password --value=$(ynh_string_random --length=32)
 
+if [ -f "$install_dir/var/rusty2.db" ]
+then
+    mv "$install_dir/var/rusty2.db" "$data_dir/rusty2.db"
+    ynh_config_add --template="credentials.json" --destination="$install_dir/credentials.json"
+fi
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
