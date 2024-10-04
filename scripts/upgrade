@@ -11,6 +11,13 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service=$app --action=stop --log_path="systemd"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression "Ensuring downward compatibility..."
@@ -33,8 +40,6 @@ ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="settings.json 
 ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
-
-ynh_nodejs_install
 
 ynh_config_add_systemd
 
