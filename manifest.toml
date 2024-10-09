@@ -17,13 +17,11 @@ admindoc = "https://etherpad.org/doc/v2.0.2/"
 code = "https://github.com/ether/etherpad-lite"
 
 [integration]
-yunohost = ">= 11.2.30.1"
+yunohost = ">= 11.2.30"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
-
 ldap = true
-
 sso = true
 
 disk = "200M"
@@ -73,6 +71,8 @@ ram.runtime = "50M"
     [resources.system_user]
 
     [resources.install_dir]
+    
+    [resources.data_dir]
 
     [resources.permissions]
     main.url = "/"
