@@ -79,7 +79,7 @@ ynh_script_progression "Installing $app..."
 
 pushd $install_dir
     ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
-    ynh_hide_warnings pnpm i    
+    ynh_hide_warnings pnpm install  
     ynh_hide_warnings pnpm run build:etherpad
 popd
 
