@@ -4,6 +4,12 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+ynh_app_setting_set --key=protect_against_basic_auth_spoofing --value=false
+
+#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression "Installing dependencies..."
@@ -56,7 +62,7 @@ ynh_script_progression "Installing $app..."
 
 pushd $install_dir
     ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
-    ynh_hide_warnings pnpm i    
+    ynh_hide_warnings pnpm install
     ynh_hide_warnings pnpm run build:etherpad
 popd
 

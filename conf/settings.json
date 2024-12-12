@@ -163,6 +163,14 @@
   "showSettingsInAdminPage": true,
 
   /*
+   * Settings for cleanup of pads
+   */
+  "cleanup": {
+    "enabled": false,
+    "keepRevisions": 5
+  },
+
+  /*
    * Node native SSL support
    *
    * This is disabled by default.
@@ -239,6 +247,13 @@
     "pageUp":    true,
     "pageDown":  true
   },
+
+  /*
+   * Enables the use of a different server. We have a different one that syncs changes from the original server.
+   * It is hosted on GitHub and should not be blocked by many firewalls.
+   *  https://etherpad.org/ep_infos
+   */
+  "updateServer": "https://etherpad.org/ep_infos",
 
   /*
    * Should we suppress errors from being visible in the default Pad Text?
@@ -506,7 +521,7 @@
      * value to work properly, but increasing the value increases susceptibility
      * to denial of service attacks (malicious clients can exhaust memory).
      */
-    "maxHttpBufferSize": 10000
+    "maxHttpBufferSize": 50000
   },
 
   /*
@@ -554,6 +569,13 @@
    * File size is specified in bytes. Default is 50 MB.
    */
   "importMaxFileSize": 52428800, // 50 * 1024 * 1024
+
+  /*
+    The authentication method used by the server.
+    The default value is sso
+    If you want to use the old authentication system, change this to apikey
+   */
+  "authenticationMethod": "${AUTHENTICATION_METHOD:sso}",
 
   /*
    * From Etherpad 1.8.5 onwards, when Etherpad is in production mode commits from individual users are rate limited
@@ -609,6 +631,13 @@
    * Valid values: DEBUG, INFO, WARN, ERROR
    */
   "loglevel": "INFO",
+
+    /*
+   * The log layout type to use.
+   *
+   * Valid values: basic, colored
+   */
+   "logLayoutType": "colored",
 
   /* Override any strings found in locale directories */
   "customLocaleStrings": {},

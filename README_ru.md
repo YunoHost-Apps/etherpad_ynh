@@ -5,7 +5,9 @@
 
 # Etherpad для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/etherpad)](https://ci-apps.yunohost.org/ci/apps/etherpad/)
+![Состояние работы](https://apps.yunohost.org/badge/state/etherpad)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/etherpad)
 
 [![Установите Etherpad с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 
@@ -18,10 +20,10 @@
 
 Etherpad is a real-time collaborative editor scalable to thousands of simultaneous real time users. It provides full data export capabilities, and runs on your server, under your control.
 This version of Etherpad is installed without plugins and uses Rustydb as database.
-If you want to install Etherpad with plugins and MySQL database: https://github.com/YunoHost-Apps/etherpad_mypads_ynh",
+If you want to install Etherpad with plugins and MySQL database: https://github.com/YunoHost-Apps/etherpad_mypads_ynh
 
 
-**Поставляемая версия:** 2.2.5~ynh1
+**Поставляемая версия:** 2.2.6~ynh1
 
 **Демо-версия:** <https://video.etherpad.com/>
 
