@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # Etherpad para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/etherpad)](https://ci-apps.yunohost.org/ci/apps/etherpad/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/etherpad)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/etherpad)
 
 [![Instalar Etherpad con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 

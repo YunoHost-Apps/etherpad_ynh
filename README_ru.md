@@ -5,7 +5,9 @@
 
 # Etherpad для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/etherpad)](https://ci-apps.yunohost.org/ci/apps/etherpad/)
+![Состояние работы](https://apps.yunohost.org/badge/state/etherpad)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/etherpad)
 
 [![Установите Etherpad с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 

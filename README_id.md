@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Etherpad untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/etherpad.svg)](https://ci-apps.yunohost.org/ci/apps/etherpad/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/etherpad.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/etherpad.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/etherpad)](https://ci-apps.yunohost.org/ci/apps/etherpad/)
+![Status kerja](https://apps.yunohost.org/badge/state/etherpad)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/etherpad)
 
 [![Pasang Etherpad dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=etherpad)
 
