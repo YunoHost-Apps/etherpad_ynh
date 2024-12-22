@@ -23,7 +23,7 @@ This version of Etherpad is installed without plugins and uses Rustydb as databa
 If you want to install Etherpad with plugins and MySQL database: https://github.com/YunoHost-Apps/etherpad_mypads_ynh
 
 
-**Dostarczona wersja:** 2.2.6~ynh1
+**Dostarczona wersja:** 2.2.7~ynh1
 
 **Demo:** <https://video.etherpad.com/>
 
