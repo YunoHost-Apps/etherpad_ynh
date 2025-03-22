@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -10,31 +14,12 @@ source /usr/share/yunohost/helpers
 ynh_app_setting_set --key=protect_against_basic_auth_spoofing --value=false
 
 #=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-ynh_setup_source --dest_dir=$install_dir
-
-#=================================================
-# SYSTEM CONFIGURATION
-#=================================================
-ynh_script_progression "Adding system configurations related to $app..."
-
-ynh_config_add_systemd
-
-ynh_config_add_nginx
-
-ynh_config_add_logrotate
-
-yunohost service add $app --description="Collaborative editor"
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
@@ -56,12 +41,34 @@ ynh_config_add --template="settings.json" --destination="$install_dir/settings.j
 ynh_config_add --template="credentials.json" --destination="$install_dir/credentials.json"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+# Create a dedicated NGINX config using the conf/nginx.conf template
+ynh_config_add_nginx
+
+# Create a dedicated systemd config
+ynh_config_add_systemd
+yunohost service add "$app" --description="Collaborative editor"
+
+# Use logrotate to manage application logfile(s)
+ynh_config_add_logrotate
+
+#=================================================
 # INSTALL ETHERPAD
 #=================================================
 ynh_script_progression "Installing $app..."
 
 pushd $install_dir
-    ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
     ynh_hide_warnings pnpm install
     ynh_hide_warnings pnpm run build:etherpad
 popd
@@ -71,10 +78,11 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
+# Start a systemd service
+ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression "Installation of Etherpad completed"
+ynh_script_progression "Installation of $app completed"

@@ -8,7 +8,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service=$app --action=stop --log_path=systemd
+ynh_systemctl --service="$app" --action="stop" --log_path=systemd
 
 #=================================================
 # MODIFY URL IN NGINX CONF
@@ -22,7 +22,7 @@ ynh_config_change_url_nginx
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
+ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
 
 #=================================================
 # END OF SCRIPT
