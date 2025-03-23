@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "etherpad"
@@ -23,6 +25,7 @@ architectures = "all"
 multi_instance = true
 
 ldap = true
+
 sso = true
 
 disk = "200M"
@@ -62,22 +65,22 @@ ram.runtime = "50M"
     type = "password"
 
 [resources]
-        [resources.sources.main]
-        url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.2.7.tar.gz"
-        sha256 = "f937a9ebe541101a6e2eae624aae4478723b7883b611a3e83456eb87de3d672b"
-        autoupdate.strategy = "latest_github_tag"
-
-    [resources.ports]
+    [resources.sources.main]
+    url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.2.7.tar.gz"
+    sha256 = "f937a9ebe541101a6e2eae624aae4478723b7883b611a3e83456eb87de3d672b"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
     [resources.install_dir]
-    
+
     [resources.data_dir]
 
     [resources.permissions]
     main.url = "/"
     main.auth_header = false
+
+    [resources.ports]
 
     [resources.apt]
     packages_from_raw_bash = """
