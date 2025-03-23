@@ -34,7 +34,7 @@ If you want to install Etherpad with plugins and MySQL database: https://github.
 ## Dokumentasi dan sumber daya
 
 - Website aplikasi resmi: <https://etherpad.org/>
-- Dokumentasi admin resmi: <https://etherpad.org/doc/v2.0.2/>
+- Dokumentasi admin resmi: <https://etherpad.org/doc/v2.2.7/>
 - Depot kode aplikasi hulu: <https://github.com/ether/etherpad-lite>
 - Gudang YunoHost: <https://apps.yunohost.org/app/etherpad>
 - Laporkan bug: <https://github.com/YunoHost-Apps/etherpad_ynh/issues>

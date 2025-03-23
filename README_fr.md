@@ -34,7 +34,7 @@ Si vous souhaitez installer Etherpad avec les plugins et la base de données MyS
 ## Documentations et ressources
 
 - Site officiel de l’app : <https://etherpad.org/>
-- Documentation officielle de l’admin : <https://etherpad.org/doc/v2.0.2/>
+- Documentation officielle de l’admin : <https://etherpad.org/doc/v2.2.7/>
 - Dépôt de code officiel de l’app : <https://github.com/ether/etherpad-lite>
 - YunoHost Store : <https://apps.yunohost.org/app/etherpad>
 - Signaler un bug : <https://github.com/YunoHost-Apps/etherpad_ynh/issues>

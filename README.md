@@ -34,7 +34,7 @@ If you want to install Etherpad with plugins and MySQL database: https://github.
 ## Documentation and resources
 
 - Official app website: <https://etherpad.org/>
-- Official admin documentation: <https://etherpad.org/doc/v2.0.2/>
+- Official admin documentation: <https://etherpad.org/doc/v2.2.7/>
 - Upstream app code repository: <https://github.com/ether/etherpad-lite>
 - YunoHost Store: <https://apps.yunohost.org/app/etherpad>
 - Report a bug: <https://github.com/YunoHost-Apps/etherpad_ynh/issues>
