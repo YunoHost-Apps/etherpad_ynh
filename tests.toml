@@ -8,6 +8,13 @@ test_format = 1.0
     # Tests to run
     # ------------
 
+    # -------------------------------
+    # Default args to use for install
+    # -------------------------------
+
+    args.export = "none"
+    args.password = "##SuperAdminPassword##"
+
     [with_abiword]
     args.export = "abiword"
     only = ["install.root"]
@@ -15,13 +22,6 @@ test_format = 1.0
     [with_libreoffice]
     args.export = "libreoffice"
     only = ["install.root"]
-
-    # -------------------------------
-    # Default args to use for install
-    # -------------------------------
-
-    args.export = "none"
-    args.password = "##SuperAdminPassword##"
 
     # -------------------------------
     # Commits to test upgrade from
