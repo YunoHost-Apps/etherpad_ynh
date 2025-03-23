@@ -85,7 +85,7 @@ ynh_config_add_logrotate
 ynh_script_progression "Installing $app..."
 
 pushd $install_dir
-    ynh_hide_warnings pnpm install  
+    ynh_hide_warnings pnpm install
     ynh_hide_warnings pnpm run build:etherpad
 popd
 
@@ -94,7 +94,7 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
+ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Etherpad is running"
 
 #=================================================
 # END OF SCRIPT

@@ -79,7 +79,7 @@ popd
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
+ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Etherpad is running"
 
 #=================================================
 # END OF SCRIPT
