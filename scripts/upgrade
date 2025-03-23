@@ -1,32 +1,25 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
-
-#=================================================
-# INITIALIZE AND STORE SETTINGS
-#=================================================
-
-ynh_app_setting_set --key=protect_against_basic_auth_spoofing --value=false
 
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service=$app --action=stop --log_path="systemd"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
+ynh_systemctl --service="$app" --action="stop" --log_path="systemd"
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression "Ensuring downward compatibility..."
+
+ynh_app_setting_set_default --key=protect_against_basic_auth_spoofing --value=false
 
 ynh_app_setting_set_default --key=language --value=en
 ynh_app_setting_set_default --key=export --value=none
@@ -44,25 +37,13 @@ fi
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
+# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="settings.json credentials.json var"
 
 #=================================================
-# REAPPLY SYSTEM CONFIGURATIONS
+# UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression "Upgrading system configurations related to $app..."
-
-ynh_config_add_nginx
-
-ynh_config_add_systemd
-
-ynh_config_add_logrotate
-
-yunohost service add $app --description="Collaborative editor"
-
-#=================================================
-# CONFIGURE ETHERPAD
-#=================================================
-ynh_script_progression "Configure $app..."
+ynh_script_progression "Updating $app's configuration files..."
 
 abiword_path="null"
 soffice_path="null"
@@ -79,13 +60,32 @@ ynh_config_add --template="settings.json" --destination="$install_dir/settings.j
 ynh_config_add --template="credentials.json" --destination="$install_dir/credentials.json"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+
+#=================================================
+# REAPPLY SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Upgrading system configurations related to $app..."
+
+ynh_config_add_nginx
+
+ynh_config_add_systemd
+yunohost service add "$app" --description="Collaborative editor"
+
+ynh_config_add_logrotate
+
+#=================================================
 # INSTALL ETHERPAD
 #=================================================
 ynh_script_progression "Installing $app..."
 
 pushd $install_dir
-    ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
-    ynh_hide_warnings pnpm install  
+    ynh_hide_warnings pnpm install
     ynh_hide_warnings pnpm run build:etherpad
 popd
 
@@ -94,7 +94,7 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action=restart --log_path=systemd --wait_until="Your Etherpad version is"
+ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Etherpad is running"
 
 #=================================================
 # END OF SCRIPT

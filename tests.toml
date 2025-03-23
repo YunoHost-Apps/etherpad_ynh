@@ -1,15 +1,19 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/tests.v1.schema.json
+
 test_format = 1.0
 
 [default]
 
+    # ------------
+    # Tests to run
+    # ------------
+
     # -------------------------------
-    # Commits to test upgrade from
+    # Default args to use for install
     # -------------------------------
 
     args.export = "none"
     args.password = "##SuperAdminPassword##"
-
-    #test_upgrade_from.96653aee9379d579a655777ac274355f4afca61c.name = "Upgrade from 5.4"
 
     [with_abiword]
     args.export = "abiword"
@@ -18,3 +22,11 @@ test_format = 1.0
     [with_libreoffice]
     args.export = "libreoffice"
     only = ["install.root"]
+
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    #test_upgrade_from.96653aee9379d579a655777ac274355f4afca61c.name = "Upgrade from 5.4"
+
+    test_upgrade_from.50cf2400cb16c3f9eb9b0ae1e1beb808ed208870.name = "Upgrade from 2.2.7~ynh1"
