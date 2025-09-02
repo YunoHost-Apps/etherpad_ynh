@@ -92,4 +92,7 @@ ram.runtime = "50M"
               echo "abiword"
           fi
     """
+
+    [resources.nodejs]
+    version = "22"
     
