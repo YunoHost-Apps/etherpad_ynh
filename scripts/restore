@@ -4,6 +4,8 @@
 # IMPORT GENERIC HELPERS
 #=================================================
 
+
+
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -25,6 +27,7 @@ ynh_restore "$data_dir"
 #=================================================
 ynh_script_progression "Reinstalling dependencies..."
 
+#REMOVEME? ynh_nodejs_install
 ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 
 #=================================================
