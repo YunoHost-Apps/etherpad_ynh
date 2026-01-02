@@ -24,8 +24,8 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
-ldap = true
-sso = true
+ldap = false
+sso = false
 
 disk = "200M"
 ram.build = "2G"
