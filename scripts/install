@@ -7,12 +7,6 @@
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE AND STORE SETTINGS
-#=================================================
-
-ynh_app_setting_set --key=protect_against_basic_auth_spoofing --value=false
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -26,17 +20,6 @@ chmod +x $install_dir/etherpad
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
-
-abiword_path="null"
-soffice_path="null"
-
-if [[ "$export" == "abiword" ]]
-then
-    abiword_path="\"$(which abiword)\""
-elif [[ "$export" == "libreoffice" ]]
-then
-    soffice_path="\"$(which soffice)\""
-fi
 
 ynh_config_add --template="settings.json" --destination="$install_dir/settings.json"
 
