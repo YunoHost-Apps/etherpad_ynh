@@ -144,13 +144,13 @@
   },
   "plugins": {
     "ep_align": {
-      "enabled": false
+      "enabled": true
     },
     "ep_spellcheck": {
-      "enabled": false
+      "enabled": true
     },
     "ep_markdown": {
-      "enabled": false
+      "enabled": true
     }
   }
 }
