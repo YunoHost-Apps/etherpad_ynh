@@ -21,7 +21,7 @@ code = "https://github.com/ether/etherpad-go"
 [integration]
 yunohost = ">= 12.1.38"
 helpers_version = "2.1"
-architectures = "all"
+architectures = ["arm64", "amd64"]
 multi_instance = true
 
 ldap = false
@@ -61,8 +61,10 @@ ram.runtime = "50M"
     rename = "etherpad"
     in_subdir = false
     extract = false
-    url = "https://github.com/ether/etherpad-go/releases/download/v0.0.4/etherpad-go-linux-amd64"
-    sha256 = "fee1c318e7256b40d034f12b910a0f4700b7dc0bcdbb471a5a4eca7316eeef17"
+    amd64.url = "https://github.com/ether/etherpad-go/releases/download/v0.0.4/etherpad-go-linux-amd64"
+    amd64.sha256 = "fee1c318e7256b40d034f12b910a0f4700b7dc0bcdbb471a5a4eca7316eeef17"
+    arm64.url = "https://github.com/ether/etherpad-go/releases/download/v0.0.4/etherpad-go-linux-arm64"
+    arm64.sha256 = "69002771b3d70b56364e7da831ba9395a143bbea58d819701f6d6232a0d3ddfc"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]

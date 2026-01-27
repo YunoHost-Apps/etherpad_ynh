@@ -12,7 +12,6 @@ test_format = 1.0
     # Default args to use for install
     # -------------------------------
 
-
     # -------------------------------
     # Commits to test upgrade from
     # -------------------------------
