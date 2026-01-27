@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "2.6.0~ynh2"
+version = "0.0.4~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -16,7 +16,7 @@ license = "Apache-2.0"
 website = "https://etherpad.org/"
 demo = "https://video.etherpad.com/"
 admindoc = "https://etherpad.org/doc/v2.2.7/"
-code = "https://github.com/ether/etherpad-lite"
+code = "https://github.com/ether/etherpad-go"
 
 [integration]
 yunohost = ">= 12.1.38"
@@ -43,20 +43,6 @@ ram.runtime = "50M"
     type = "group"
     default = "visitors"
 
-    [install.export]
-    ask.en = "Use AbiWord (~260 Mo) or LibreOffice (~400 Mo) (more stable) to expand export possibilities (PDF, doc)?"
-    ask.fr = "Utiliser AbiWord (~260 Mo) ou LibreOffice (~400 Mo) (plus stable) pour étendre les possibilités d'export (PDF, doc) ?"
-    type = "select"
-    choices = ["none", "abiword", "libreoffice"]
-    default = "none"
-
-    [install.language]
-    ask.en = "Choose the application language"
-    ask.fr = "Choisissez la langue de l'application"
-    type = "select"
-    choices = ["ca", "de", "en", "es", "fr", "gl", "hu", "it", "nl", "pt"]
-    default = "fr"
-
     [install.admin]
     type = "user"
 
@@ -65,8 +51,11 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.6.0.tar.gz"
-    sha256 = "d66a3825ada7233ec927cb6ca4816f0c527b457fc423df5c32e67a2c20f53d02"
+    rename = "etherpad"
+    in_subdir = false
+    extract = false
+    url = "https://github.com/ether/etherpad-go/releases/download/v0.0.4/etherpad-go-linux-amd64"
+    sha256 = "fee1c318e7256b40d034f12b910a0f4700b7dc0bcdbb471a5a4eca7316eeef17"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
@@ -91,6 +80,4 @@ ram.runtime = "50M"
               echo "abiword"
           fi
     """
-    
-    [resources.nodejs]
-    version = "22"
+

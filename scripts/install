@@ -20,31 +20,14 @@ ynh_script_progression "Setting up source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
+chmos +x $install_dir/etherpad
+
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
-abiword_path="null"
-soffice_path="null"
-
-if [[ "$export" == "abiword" ]]
-then
-    abiword_path="\"$(which abiword)\""
-elif [[ "$export" == "libreoffice" ]]
-then
-    soffice_path="\"$(which soffice)\""
-fi
-
 ynh_config_add --template="settings.json" --destination="$install_dir/settings.json"
-ynh_config_add --template="credentials.json" --destination="$install_dir/credentials.json"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -56,21 +39,11 @@ ynh_config_add_nginx
 
 # Create a dedicated systemd config
 ynh_config_add_systemd
+
 yunohost service add "$app" --description="Collaborative editor"
 
 # Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
-
-#=================================================
-# INSTALL ETHERPAD
-#=================================================
-ynh_script_progression "Installing $app..."
-
-pushd $install_dir
-    ynh_hide_warnings pnpm install
-    ynh_hide_warnings pnpm run build:etherpad
-    chown -R $app:$app ./node_modules
-popd
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -78,7 +51,7 @@ popd
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemctl --service="$app" --action=restart --log_path=systemd --wait_until="Etherpad is running"
+ynh_systemctl --service="$app" --action=restart
 
 #=================================================
 # END OF SCRIPT
