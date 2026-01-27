@@ -1,3 +1,1 @@
-Etherpad is a real-time collaborative editor scalable to thousands of simultaneous real time users. It provides full data export capabilities, and runs on your server, under your control.
-This version of Etherpad is installed without plugins and uses Rustydb as database.
-If you want to install Etherpad with plugins and MySQL database: https://github.com/YunoHost-Apps/etherpad_mypads_ynh
+Etherpad-Go is a performance focused 1 to 1 rewrite of Etherpad-Lite in Go. The old implementation was written in NodeJS and was still in CommonJS. A new implementation in Go allows us to take advantage of Go's concurrency model, static typing, and performance optimizations.
