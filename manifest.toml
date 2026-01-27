@@ -69,15 +69,3 @@ ram.runtime = "50M"
     main.auth_header = false
 
     [resources.ports]
-
-    [resources.apt]
-    packages_from_raw_bash = """
-          if [[ "$export" == "libreoffice" ]]
-          then
-              echo "unoconv libreoffice-writer"
-          elif [[ "$export" == "abiword" ]]
-          then
-              echo "abiword"
-          fi
-    """
-
