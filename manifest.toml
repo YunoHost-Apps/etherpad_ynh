@@ -15,7 +15,7 @@ maintainers = ["eric_G"]
 license = "Apache-2.0"
 website = "https://etherpad.org/"
 demo = "https://video.etherpad.com/"
-admindoc = "https://etherpad.org/doc/v2.2.7/"
+admindoc = "https://etherpad.org/doc/"
 code = "https://github.com/ether/etherpad-go"
 
 [integration]
@@ -49,7 +49,7 @@ ram.runtime = "50M"
     type = "select"
     choices = ["ca", "de", "en", "es", "fr", "gl", "hu", "it", "nl", "pt"]
     default = "fr"
-    
+
     [install.admin]
     type = "user"
 
