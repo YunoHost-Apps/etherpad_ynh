@@ -3,7 +3,7 @@
   "showRecentPads": true,
   "favicon": null,
   "skinName": "colibris",
-  "skinVariants": "super-light-toolbar super-light-editor light-background",
+  "skinVariants": "light-toolbar super-light-editor dark-background",
   "ip": "127.0.0.1",
   "port": "__PORT__",
   "showSettingsInAdminPage": true,
