@@ -16,9 +16,9 @@ ynh_restore "$install_dir"
 #=================================================
 # RESTORE THE DATA DIRECTORY
 #=================================================
-ynh_script_progression "Restoring the data directory..."
+#ynh_script_progression "Restoring the data directory..."
 
-ynh_restore "$data_dir"
+#ynh_restore "$data_dir"
 
 #=================================================
 # RESTORE SYSTEM CONFIGURATION
