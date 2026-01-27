@@ -71,7 +71,7 @@
   "minify": true,
   "maxAge": 21600,
   "abiword": null,
-  "soffice": "libreoffice",
+  "soffice": null,
   "allowUnknownFileEnds": true,
   "requireAuthentication": false,
   "requireAuthorization": false,
