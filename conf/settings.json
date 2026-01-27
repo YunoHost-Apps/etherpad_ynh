@@ -23,7 +23,7 @@
     "user": null,
     "password": null,
     "charset": null,
-    "filename": "var/dirty.db",
+    "filename": "dirty.db",
     "collection": null,
     "url": null
   },
