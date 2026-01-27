@@ -82,5 +82,5 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "unoconv, libreoffice-writer"
+    packages = "libreoffice-writer"
     
