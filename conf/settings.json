@@ -143,14 +143,11 @@
     ]
   },
   "plugins": {
-    "ep_align": {
-      "enabled": true
-    },
-    "ep_spellcheck": {
-      "enabled": true
-    },
-    "ep_markdown": {
-      "enabled": true
-    }
+    "ep_align": {"enabled": true},
+    "ep_spellcheck": {"enabled": true},
+    "ep_markdown": {"enabled": true},
+    "ep_heading": {"enabled": true},
+    "ep_spellcheck": {"enabled": true},
+    "ep_markdown": {"enabled": true}
   }
 }
