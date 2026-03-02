@@ -15,7 +15,7 @@
   "authenticationMethod": "sso",
   "enableDarkMode": true,
   "updateServer": "https://etherpad.org/ep_infos",
-  "dbType": "memory",
+  "dbType": "rustydb",
   "dbSettings": {
     "host": null,
     "port": null,
@@ -23,7 +23,7 @@
     "user": null,
     "password": null,
     "charset": null,
-    "filename": "dirty.db",
+    "filename": "__DATA_DIR__/rusty2.db",
     "collection": null,
     "url": null
   },
