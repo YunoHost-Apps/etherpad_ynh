@@ -144,10 +144,13 @@
   },
   "plugins": {
     "ep_align": {"enabled": true},
+    "ep_author_hover": {"enabled": true},
     "ep_spellcheck": {"enabled": true},
     "ep_markdown": {"enabled": true},
     "ep_heading": {"enabled": true},
     "ep_spellcheck": {"enabled": true},
-    "ep_markdown": {"enabled": true}
+    "ep_font_family": {"enabled": true},
+    "ep_print": {"enabled": true},
+    "ep_table_of_contents": {"enabled": true}
   }
 }
