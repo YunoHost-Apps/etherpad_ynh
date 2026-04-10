@@ -15,12 +15,6 @@ ynh_print_info "Declaring files to be backed up..."
 ynh_backup "$install_dir"
 
 #=================================================
-# BACKUP THE DATA DIR
-#=================================================
-
-ynh_backup "$data_dir"
-
-#=================================================
 # BACKUP SYSTEM CONFIGURATION
 #=================================================
 
@@ -30,8 +24,12 @@ ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 # Backup the systemd service unit
 ynh_backup "/etc/systemd/system/$app.service"
 
-# Backup the logrotate configuration
-ynh_backup "/etc/logrotate.d/$app"
+#=================================================
+# BACKUP THE MYSQL DATABASE
+#=================================================
+ynh_print_info "Backing up the database..."
+
+ynh_psql_dump_db > db.sql
 
 #=================================================
 # END OF SCRIPT

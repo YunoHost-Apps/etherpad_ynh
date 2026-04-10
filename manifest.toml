@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "2.6.1~ynh1"
+version = "0.5.0~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -15,40 +15,29 @@ maintainers = ["eric_G"]
 license = "Apache-2.0"
 website = "https://etherpad.org/"
 demo = "https://video.etherpad.com/"
-admindoc = "https://etherpad.org/doc/v2.2.7/"
-code = "https://github.com/ether/etherpad-lite"
+admindoc = "https://etherpad.org/doc/"
+code = "https://github.com/ether/etherpad-go"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
-architectures = "all"
+architectures = ["arm64", "amd64"]
 multi_instance = true
 
 ldap = false
 sso = false
 
-disk = "200M"
-ram.build = "2G"
+disk = "20M"
+ram.build = "90M"
 ram.runtime = "50M"
 
 [install]
     [install.domain]
     type = "domain"
 
-    [install.path]
-    type = "path"
-    default = "/etherpad"
-
     [install.init_main_permission]
     type = "group"
     default = "visitors"
-
-    [install.export]
-    ask.en = "Use AbiWord (~260 Mo) or LibreOffice (~400 Mo) (more stable) to expand export possibilities (PDF, doc)?"
-    ask.fr = "Utiliser AbiWord (~260 Mo) ou LibreOffice (~400 Mo) (plus stable) pour étendre les possibilités d'export (PDF, doc) ?"
-    type = "select"
-    choices = ["none", "abiword", "libreoffice"]
-    default = "none"
 
     [install.language]
     ask.en = "Choose the application language"
@@ -65,32 +54,29 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/ether/etherpad-lite/archive/refs/tags/2.6.1.tar.gz"
-    sha256 = "dc236b1d569a59c09896ca6411860fff5a894ed675f2049652f866ef5c0f5b37"
-    autoupdate.strategy = "latest_github_tag"
+    rename = "etherpad"
+    in_subdir = false
+    extract = false
+    amd64.url = "https://github.com/ether/etherpad-go/releases/download/v0.5.0/etherpad-go-linux-amd64"
+    amd64.sha256 = "a29f05f606faee414169c45458fd3202292e79bd2445145776dff9dc68e44aca"
+    arm64.url = "https://github.com/ether/etherpad-go/releases/download/v0.5.0/etherpad-go-linux-arm64"
+    arm64.sha256 = "46cb1a32fbf4234d438adcd1e7ef331091a7173df9c589cb705ca2b8a3575479"
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset.amd64 = "*-amd64"
+    autoupdate.asset.armhf = "*-arm64"
 
     [resources.system_user]
 
     [resources.install_dir]
 
-    [resources.data_dir]
-
     [resources.permissions]
     main.url = "/"
-    main.auth_header = false
 
     [resources.ports]
 
-    [resources.apt]
-    packages_from_raw_bash = """
-          if [[ "$export" == "libreoffice" ]]
-          then
-              echo "unoconv libreoffice-writer"
-          elif [[ "$export" == "abiword" ]]
-          then
-              echo "abiword"
-          fi
-    """
-    
-    [resources.nodejs]
-    version = "22"
+    #[resources.apt]
+    #packages = "postgresql"
+
+    #[resources.database]
+    #type = "postgresql"
