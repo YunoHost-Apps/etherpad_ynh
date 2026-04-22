@@ -199,7 +199,7 @@
   /*
    * The default text of a pad
    */
-  "defaultPadText" : "Welcome to Etherpad-lite!\n\nThis version of Etherpad is installed without plugins and uses Redis as database.\nBe aware, Redis database backup and restore is not fully implemented.\n\nIf you are facing an issue or want to improve this app, please open a new issue in this project: https://github.com/YunoHost-Apps/etherpad_ynh",
+  "defaultPadText" : "Welcome to Etherpad-lite!\nThis version of Etherpad is installed without plugins and uses dirty.db as database.\n\nIf you are facing an issue or want to improve this app, please open a new issue in this project: https://github.com/YunoHost-Apps/etherpad_ynh",
 
   /*
    * Default Pad behavior.
@@ -289,15 +289,6 @@
    * Set to 0 to disable caching.
    */
   "maxAge": 21600, // 60 * 60 * 6 = 6 hours
-
-  /*
-   * Absolute path to the Abiword executable.
-   *
-   * Abiword is needed to get advanced import/export features of pads. Setting
-   * it to null disables Abiword and will only allow plain text and HTML
-   * import/exports.
-   */
-  "abiword": null,
 
   /*
    * This is the absolute path to the soffice executable.
