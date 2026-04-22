@@ -291,15 +291,6 @@
   "maxAge": 21600, // 60 * 60 * 6 = 6 hours
 
   /*
-   * Absolute path to the Abiword executable.
-   *
-   * Abiword is needed to get advanced import/export features of pads. Setting
-   * it to null disables Abiword and will only allow plain text and HTML
-   * import/exports.
-   */
-  "abiword": null,
-
-  /*
    * This is the absolute path to the soffice executable.
    *
    * LibreOffice can be used in lieu of Abiword to export pads.
