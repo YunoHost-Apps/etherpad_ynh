@@ -78,4 +78,4 @@ ram.runtime = "50M"
     packages = "libreoffice-writer"
 
     [resources.nodejs]
-    version = "22"
+    version = "24"
