@@ -33,7 +33,7 @@ ynh_config_add --template="credentials.json" --destination="$install_dir/credent
 #=================================================
 ynh_script_progression "Installing dependencies..."
 
-ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+ynh_hide_warnings corepack enable && corepack prepare pnpm@11.0.0 --activate
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -56,8 +56,8 @@ ynh_config_add_logrotate
 ynh_script_progression "Installing $app..."
 
 pushd $install_dir
-    ynh_hide_warnings pnpm install
-    ynh_hide_warnings pnpm run build:etherpad
+    ynh_hide_warnings ynh_exec_as_app pnpm install
+    ynh_hide_warnings ynh_exec_as_app pnpm run build:etherpad
     chown -R $app:$app ./node_modules
 popd
 
