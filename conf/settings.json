@@ -311,7 +311,38 @@
    *
    * You shouldn't use "dirty" for for anything else than testing or
    * development.
+   *
+   *
+   * Database specific settings are dependent on dbType, and go in dbSettings.
+   * Remember that since Etherpad 1.6.0 you can also store this information in
+   * credentials.json.
+   *
+   * For a complete list of the supported drivers, please refer to:
+   * https://www.npmjs.com/package/ueberdb2
    */
+
+ "dbType": "rustydb",
+ "dbSettings": {
+    "filename": "__DATA_DIR__/rusty2.db"
+  },
+
+  /*
+   * An Example of MySQL Configuration (commented out).
+   *
+   * See: https://github.com/ether/etherpad/wiki/How-to-use-Etherpad-Lite-with-MySQL
+   */
+
+  /*
+  "dbType" : "mysql",
+  "dbSettings" : {
+    "user":     "etherpaduser",
+    "host":     "localhost",
+    "port":     3306,
+    "password": "PASSWORD",
+    "database": "etherpad_lite_db",
+    "charset":  "utf8mb4"
+  },
+  */
 
   /*
    * The default text of a pad
@@ -693,11 +724,15 @@
 
   "socketIo": {
     /*
-     * Maximum permitted client message size (in bytes). All messages from
-     * clients that are larger than this will be rejected. Large values make it
-     * possible to paste large amounts of text, and plugins may require a larger
-     * value to work properly, but increasing the value increases susceptibility
-     * to denial of service attacks (malicious clients can exhaust memory).
+     * Maximum permitted client message size (in bytes). This controls the
+     * maximum single-message size for socket.io and directly affects large
+     * paste operations. All messages from clients that are larger than this
+     * will be rejected. Large values make it possible to paste large amounts
+     * of text, and plugins may require a larger value to work properly, but
+     * increasing the value increases susceptibility to denial of service
+     * attacks (malicious clients can exhaust memory).
+     *
+     * 1MB accommodates large pastes while still preventing abuse.
      */
     "maxHttpBufferSize": 1000000
   },
