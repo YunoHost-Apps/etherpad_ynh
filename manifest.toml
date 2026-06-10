@@ -19,7 +19,7 @@ admindoc = "https://etherpad.org/doc/v3.3.1/index.html"
 code = "https://github.com/ether/etherpad-lite"
 
 [integration]
-yunohost = ">= 12.1.40.1"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
