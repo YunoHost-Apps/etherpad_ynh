@@ -15,17 +15,13 @@
   "authenticationMethod": "sso",
   "enableDarkMode": true,
   "updateServer": "https://etherpad.org/ep_infos",
-  "dbType": "memory",
+  "dbType": "postgres",
   "dbSettings": {
-    "host": null,
-    "port": null,
-    "database": null,
-    "user": null,
-    "password": null,
-    "charset": null,
-    "filename": "var/dirty.db",
-    "collection": null,
-    "url": null
+    "host": "localhost",
+    "port": "5432",
+    "database": "__DB_NAME__",
+    "user": "__DB_USER__",
+    "password": "__DB_PWD__",
   },
   "defaultPadText": "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nGet involved with Etherpad at https://etherpad.org\n",
   "padOptions": {
