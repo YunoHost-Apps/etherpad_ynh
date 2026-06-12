@@ -144,10 +144,10 @@
   },
   "plugins": {
     "ep_align": {
-      "enabled": false
+      "enabled": true
     },
     "ep_author_hover": {
-      "enabled": false
+      "enabled": true
     },
     "ep_chat_log_join_leave": {
       "enabled": false
@@ -168,7 +168,7 @@
       "enabled": false
     },
     "ep_markdown": {
-      "enabled": false
+      "enabled": true
     },
     "ep_print": {
       "enabled": false
