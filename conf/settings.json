@@ -146,10 +146,10 @@
     "ep_cursortrace": {"enabled": false},
     "ep_font_color": {"enabled": false},
     "ep_font_family": {"enabled": false},
-    "ep_font_size": {"enabled": true},
+    "ep_font_size": {"enabled": false},
     "ep_markdown": {"enabled": true},
     "ep_print": {"enabled": false},
-    "ep_spellcheck": {"enabled": false},
-    "ep_table_of_contents": {"enabled": false}
+    "ep_spellcheck": {"enabled": true},
+    "ep_table_of_contents": {"enabled": true}
   }
 }
