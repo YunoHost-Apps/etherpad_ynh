@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "3.3.0~ynh1"
+version = "3.3.1~ynh1"
 
 maintainers = ["eric_G"]
 
