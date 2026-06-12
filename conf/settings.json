@@ -67,7 +67,7 @@
   "minify": true,
   "maxAge": 21600,
   "abiword": null,
-  "soffice": null,
+  "soffice": "/usr/bin/soffice",
   "allowUnknownFileEnds": true,
   "requireAuthentication": false,
   "requireAuthorization": false,
