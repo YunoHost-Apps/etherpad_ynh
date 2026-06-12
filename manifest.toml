@@ -76,7 +76,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "postgresql"
+    packages = "postgresql, libreoffice-writer"
 
     [resources.database]
     type = "postgresql"
