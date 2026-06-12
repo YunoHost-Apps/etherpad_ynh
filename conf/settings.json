@@ -120,24 +120,24 @@
   "enableAdminUITests": false,
   "lowerCasePadIds": false,
   "sso": {
-    "issuer": "${SSO_ISSUER:http://127.0.0.1:__PORT__}",
-      "clients": [
-        {
-          "client_id": "${ADMIN_CLIENT:admin_client}",
-          "client_secret": "${ADMIN_SECRET:admin}",
-          "grant_types": ["authorization_code"],
-          "response_types": ["code"],
-          "redirect_uris": ["${ADMIN_REDIRECT:http://127.0.0.1:__PORT__/admin/}"]
-        },
-        {
-          "client_id": "${USER_CLIENT:user_client}",
-          "client_secret": "${USER_SECRET:user}",
-          "grant_types": ["authorization_code"],
-          "response_types": ["code"],
-          "redirect_uris": ["${USER_REDIRECT:http://127.0.0.1:__PORT__/}"]
-        }
-      ]
-    },
+    "issuer": "http://127.0.0.1:__PORT__",
+    "clients": [
+      {
+        "client_id": "admin_client",
+        "client_secret": "admin",
+        "grant_types": ["authorization_code"],
+        "response_types": ["code"],
+        "redirect_uris": ["http://127.0.0.1:__PORT__/admin/"]
+      },
+      {
+        "client_id": "user_client",
+        "client_secret": "user",
+        "grant_types": ["authorization_code"],
+        "response_types": ["code"],
+        "redirect_uris": ["http://127.0.0.1:__PORT__/"]
+      }
+    ]
+  },
   "plugins": {
     "ep_align": {
       "enabled": true
