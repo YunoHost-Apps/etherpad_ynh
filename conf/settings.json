@@ -139,7 +139,7 @@
     ]
   },
   "plugins": {
-    "ep_align": {"enabled": __ALIGN__},
+    "ep_align": {"enabled": false},
     "ep_author_hover": {"enabled": false},
     "ep_chat_log_join_leave": {"enabled": false},
     "ep_clear_formatting": {"enabled": false},
