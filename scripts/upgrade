@@ -6,6 +6,8 @@
 
 source /usr/share/yunohost/helpers
 
+yunohost app ssowatconf
+
 #=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
