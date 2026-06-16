@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "3.3.1~ynh1"
+version = "3.3.1~ynh2"
 
 maintainers = ["eric_G"]
 
@@ -25,7 +25,7 @@ architectures = "all"
 multi_instance = true
 
 ldap = false
-sso = true
+sso = false
 
 disk = "200M"
 ram.build = "2G"
@@ -34,10 +34,6 @@ ram.runtime = "50M"
 [install]
     [install.domain]
     type = "domain"
-
-    [install.path]
-    type = "path"
-    default = "/etherpad"
 
     [install.init_main_permission]
     type = "group"
