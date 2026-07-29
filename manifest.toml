@@ -80,7 +80,7 @@ ram.runtime = "50M"
     admin.auth_header = false
 
     oauth2.url = "/oauth2"
-    oauth2.allowed = "visitors"
+    oauth2.allowed = "admins"
     oauth2.show_tile = false
     oauth2.protected = true
     oauth2.auth_header = false
