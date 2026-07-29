@@ -79,4 +79,8 @@ ram.runtime = "50M"
     admin.protected = true
     admin.auth_header = false
 
+    oauth2.url = "/oauth2"
+    oauth2.auth_header = false
+
+
     [resources.ports]
