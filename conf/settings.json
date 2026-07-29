@@ -3,7 +3,7 @@
   "showRecentPads": true,
   "favicon": null,
   "skinName": "colibris",
-  "skinVariants": "light-toolbar super-light-editor dark-background",
+  "skinVariants": "super-light-toolbar super-light-editor light-background",
   "ip": "127.0.0.1",
   "port": "__PORT__",
   "showSettingsInAdminPage": true,
@@ -78,9 +78,28 @@
   "trustProxy":true,
   "cookie": {
     "keyRotationInterval": 86400000,
+    "prefix": "",
     "sameSite": "Lax",
     "sessionLifetime": 864000000,
-    "sessionRefreshInterval": 86400000
+    "sessionRefreshInterval": 86400000,
+    "sessionCleanup": true
+  },
+  "updates": {
+    "tier": "off",
+    "githubRepo": "ether/etherpad-go",
+    "checkIntervalHours": 6,
+    "installMethod": "auto",
+    "preApplyGraceMinutes": 0,
+    "drainSeconds": 60,
+    "rollbackHealthCheckSeconds": 60,
+    "requireSignature": false,
+    "trustedPublicKey": "",
+    "stateFile": "var/update-state.json",
+    "maintenanceWindow": {
+      "start": "",
+      "end": "",
+      "tz": "local"
+    }
   },
   "disableIPlogging": false,
   "automaticReconnectionTimeout": 0,
@@ -95,13 +114,17 @@
   },
   "users": {
     "__ADMIN__": {
-      "password": "__PASSWORD__",
+      "password": null,
       "is_admin": true
+    },
+    "user": {
+      "password": null,
+      "is_admin": false
     }
   },
   "socketTransportProtocols": ["websocket", "polling"],
   "socketIo": {
-    "maxHttpBufferSize": 1000000
+    "maxHttpBufferSize": 1048576
   },
   "loadTest": false,
   "dumpOnUncleanExit": false,
@@ -123,6 +146,7 @@
     "issuer": "http://127.0.0.1:__PORT__",
     "clients": [
       {
+        "type": "admin",
         "client_id": "admin_client",
         "client_secret": "admin",
         "grant_types": ["authorization_code"],
@@ -130,6 +154,7 @@
         "redirect_uris": ["http://127.0.0.1:__PORT__/admin/"]
       },
       {
+        "type": "user",
         "client_id": "user_client",
         "client_secret": "user",
         "grant_types": ["authorization_code"],
