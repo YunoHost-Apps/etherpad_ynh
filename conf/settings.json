@@ -114,7 +114,7 @@
   },
   "users": {
     "__ADMIN__": {
-      "password": null,
+      "password": "__PASSWORD__",
       "is_admin": true
     },
     "user": {
