@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "0.6.6~ynh1"
+version = "0.6.7~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -57,10 +57,10 @@ ram.runtime = "50M"
     rename = "etherpad"
     in_subdir = false
     extract = false
-    amd64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.6/etherpad-go-linux-amd64"
-    amd64.sha256 = "16180133a2cee2af4aeca5ebbb06af5a75cbd9d20a35d53bee3afcb59aefe7af"
-    arm64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.6/etherpad-go-linux-arm64"
-    arm64.sha256 = "dc05fa3fe3133db7d07994a92820db61395af6303b0a7600b89c7a1b400df93c"
+    amd64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.7/etherpad-go-linux-amd64"
+    amd64.sha256 = "b9c9a8f271948c4a66af705bf822392a2dfcb25eadc0820c5834c095abdb948f"
+    arm64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.7/etherpad-go-linux-arm64"
+    arm64.sha256 = "9e17aa876f3af0ccab064c661f847070d93cedd4d1404c37f4037ee02848c2a3"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "*-amd64"
@@ -84,6 +84,5 @@ ram.runtime = "50M"
     oauth2.show_tile = false
     oauth2.protected = true
     oauth2.auth_header = false
-
 
     [resources.ports]
