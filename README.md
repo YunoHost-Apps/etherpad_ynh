@@ -27,7 +27,7 @@ Collaborative editing in real-time
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/etherpad)](https://ci-apps.yunohost.org/ci/apps/etherpad/)
 
-🛠️ Upstream Etherpad repository: <https://github.com/ether/etherpad-lite>
+🛠️ Upstream Etherpad repository: <https://github.com/ether/etherpad>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/etherpad_ynh/tree/testing).
 
