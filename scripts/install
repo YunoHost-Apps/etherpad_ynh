@@ -7,13 +7,6 @@
 source /usr/share/yunohost/helpers
 
 #=================================================
-# INITIALIZE AND STORE SETTINGS
-#=================================================
-
-ynh_app_setting_set --key=protect_against_basic_auth_spoofing --value=false
-yunohost app ssowatconf
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
@@ -21,19 +14,14 @@ ynh_script_progression "Setting up source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
+chmod +x $install_dir/etherpad
+
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template="settings.json" --destination="$install_dir/settings.json"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -45,21 +33,8 @@ ynh_config_add_nginx
 
 # Create a dedicated systemd config
 ynh_config_add_systemd
-yunohost service add "$app" --description="Collaborative editor"
 
-# Use logrotate to manage application logfile(s)
-ynh_config_add_logrotate
-
-#=================================================
-# INSTALL ETHERPAD
-#=================================================
-ynh_script_progression "Installing $app..."
-
-pushd $install_dir
-    ynh_hide_warnings ynh_exec_as_app pnpm install
-    ynh_hide_warnings ynh_exec_as_app pnpm run build:etherpad
-    chown -R $app:$app ./node_modules
-popd
+yunohost service add "$app" --description="Collaborative editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE

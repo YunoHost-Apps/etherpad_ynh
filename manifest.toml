@@ -7,7 +7,7 @@ name = "Etherpad"
 description.en = "Collaborative editing in real-time"
 description.fr = "Édition collaborative en temps réel"
 
-version = "3.3.3~ynh1"
+version = "0.6.7~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -15,20 +15,20 @@ maintainers = ["eric_G"]
 license = "Apache-2.0"
 website = "https://etherpad.org/"
 demo = "https://video.etherpad.com/"
-admindoc = "https://etherpad.org/doc/v3.3.1/index.html"
-code = "https://github.com/ether/etherpad-lite"
+admindoc = "https://etherpad.org/doc/"
+code = "https://github.com/ether/etherpad-go"
 
 [integration]
 yunohost = ">= 12.1.40"
 helpers_version = "2.1"
-architectures = "all"
+architectures = ["arm64", "amd64"]
 multi_instance = true
 
 ldap = false
 sso = false
 
-disk = "200M"
-ram.build = "2G"
+disk = "20M"
+ram.build = "90M"
 ram.runtime = "50M"
 
 [install]
@@ -54,28 +54,35 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/ether/etherpad-lite/archive/refs/tags/3.3.3.tar.gz"
-    sha256 = "a35ba10042f731cd2b40c0c71ce710620c8a3bf23c54ef58e9fa524e741df5c5"
-    autoupdate.strategy = "latest_github_tag"
+    rename = "etherpad"
+    in_subdir = false
+    extract = false
+    amd64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.7/etherpad-go-linux-amd64"
+    amd64.sha256 = "b9c9a8f271948c4a66af705bf822392a2dfcb25eadc0820c5834c095abdb948f"
+    arm64.url = "https://github.com/ether/etherpad-go/releases/download/v0.6.7/etherpad-go-linux-arm64"
+    arm64.sha256 = "9e17aa876f3af0ccab064c661f847070d93cedd4d1404c37f4037ee02848c2a3"
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset.amd64 = "*-amd64"
+    autoupdate.asset.armhf = "*-arm64"
 
     [resources.system_user]
 
     [resources.install_dir]
 
-    [resources.data_dir]
-
     [resources.permissions]
     main.url = "/"
-    main.auth_header = false
-    admin.url = "/admin"
-    admin.auth_header = false
-    admin.allowed = ["admins"]
-    admin.show_tile = false
-    
-    [resources.ports]
-    
-    [resources.apt]
-    packages = "libreoffice-writer"
 
-    [resources.nodejs]
-    version = "24"
+    admin.url = "/admin"
+    admin.allowed = "admins"
+    admin.show_tile = false
+    admin.protected = true
+    admin.auth_header = false
+
+    oauth2.url = "/oauth2"
+    oauth2.allowed = "admins"
+    oauth2.show_tile = false
+    oauth2.protected = true
+    oauth2.auth_header = false
+
+    [resources.ports]

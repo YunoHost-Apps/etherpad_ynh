@@ -14,16 +14,6 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service="$app" --action="stop"
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression "Ensuring downward compatibility..."
-
-ynh_app_setting_set_default --key=protect_against_basic_auth_spoofing --value=false
-ynh_app_setting_set_default --key=language --value=en
-ynh_app_setting_set_default --key=password --value=$(ynh_string_random --length=32)
-yunohost app ssowatconf
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
@@ -31,19 +21,7 @@ ynh_script_progression "Upgrading source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="settings.json var"
 
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-#ynh_script_progression "Updating $app's configuration files..."
-
-#ynh_config_add --template="settings.json" --destination="$install_dir/settings.json"
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+chmod +x $install_dir/etherpad
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
@@ -53,20 +31,8 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd
-yunohost service add "$app" --description="Collaborative editor"
 
-ynh_config_add_logrotate
-
-#=================================================
-# INSTALL ETHERPAD
-#=================================================
-ynh_script_progression "Installing $app..."
-
-pushd $install_dir
-    ynh_hide_warnings ynh_exec_as_app pnpm install
-    ynh_hide_warnings ynh_exec_as_app pnpm run build:etherpad
-    chown -R $app:$app ./node_modules
-popd
+yunohost service add "$app" --description="Collaborative editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
