@@ -188,10 +188,16 @@
     "ep_font_size": {
       "enabled": false
     },
+    "ep_heading": {
+      "enabled": false
+    },
     "ep_markdown": {
       "enabled": true
     },
     "ep_print": {
+      "enabled": false
+    },
+    "ep_rss": {
       "enabled": false
     },
     "ep_spellcheck": {
